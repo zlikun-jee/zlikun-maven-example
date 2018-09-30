@@ -1,0 +1,44 @@
+<assembly>
+    <id>bin-${env.main}</id>
+    <formats>
+        <format>tar.gz</format>
+    </formats>
+    <includeBaseDirectory>false</includeBaseDirectory>
+    <baseDirectory>${artifactId}-${version}-bin-${env.main}</baseDirectory>
+    <fileSets>
+        <fileSet>
+            <directory>bin</directory>
+            <outputDirectory>bin</outputDirectory>
+            <!-- 指定脚本文件权限：-rwxr-xr-x -->
+            <fileMode>0755</fileMode>
+            <lineEnding>unix</lineEnding>
+            <!-- 启用maven的filter，替换脚本文件 -->
+            <filtered>true</filtered>
+        </fileSet>
+        <fileSet>
+            <directory>src/main/resources</directory>
+            <outputDirectory>resources</outputDirectory>
+            <fileMode>0644</fileMode>
+            <includes>
+                <include>*.properties</include>
+            </includes>
+            <filtered>true</filtered>
+        </fileSet>
+    </fileSets>
+    <dependencySets>
+        <dependencySet>
+            <outputDirectory>lib</outputDirectory>
+            <excludes>
+                <exclude>com.zlikun.jee.service:*</exclude>
+            </excludes>
+            <fileMode>0644</fileMode>
+        </dependencySet>
+        <dependencySet>
+            <outputDirectory>deploy</outputDirectory>
+            <includes>
+                <include>com.zlikun.jee.service:*</include>
+            </includes>
+            <fileMode>0644</fileMode>
+        </dependencySet>
+    </dependencySets>
+</assembly>

@@ -11,41 +11,20 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>1.8</java.version>
+        <env.main>dev</env.main>
     </properties>
 
     <build>
+        <filters>
+            <filter>src/main/filters/config.${env.main}.properties</filter>
+        </filters>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
         <plugins>
-            <!-- $ mvn zlikun:hello -->
-            <plugin>
-                <groupId>com.zlikun.jee</groupId>
-                <artifactId>zlikun-maven-plugin</artifactId>
-                <version>1.0.0</version>
-                <!-- 自定义配置参数 -->
-                <configuration>
-                    <name>zlikun</name>
-                    <flag>true</flag>
-                    <size>16</size>
-                    <score>70.5</score>
-                    <url>https://zlikun.com</url>
-                    <date>2018-9-30 16:00:00.0</date>
-                    <gender>MALE</gender>
-                    <tags>
-                        <param>X</param>
-                        <param>Y</param>
-                        <param>Z</param>
-                    </tags>
-                </configuration>
-                <!-- 可以为插件绑定生命周期，这里绑定为：编译阶段 -->
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>hello</goal>
-                        </goals>
-                        <phase>compile</phase>
-                    </execution>
-                </executions>
-            </plugin>
-            <!-- 官方编译插件 -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -54,6 +33,22 @@
                     <target>${java.version}</target>
                     <encoding>${project.build.sourceEncoding}</encoding>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <configuration>
+                    <descriptor>src/main/assembly/assembly.xml</descriptor>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>make-assembly</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
