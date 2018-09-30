@@ -13,18 +13,21 @@
         <java.version>1.8</java.version>
     </properties>
 
+    <!-- 需要在 settings.xml 的 servers 节点下配置帐号、密码 -->
     <!--
-    <repositories>
-        <repository>
-            <id>nexus-public</id>
-            <url>http://192.168.3.96:8081/nexus/content/groups/public/</url>
-        </repository>
+    <server>
+      <id>nexus-third</id>
+      <username>admin</username>
+      <password>admin123</password>
+    </server>
+    -->
+
+    <distributionManagement>
         <repository>
             <id>nexus-third</id>
             <url>http://192.168.3.96:8081/nexus/content/repositories/thirdparty/</url>
         </repository>
-    </repositories>
-    -->
+    </distributionManagement>
 
     <build>
         <plugins>
@@ -37,9 +40,6 @@
                     <encoding>${project.build.sourceEncoding}</encoding>
                 </configuration>
             </plugin>
-            <!-- http://maven.apache.org/plugins/maven-source-plugin/ -->
-            <!-- http://maven.apache.org/plugins/maven-source-plugin/usage.html -->
-            <!-- http://maven.apache.org/plugins/maven-source-plugin/examples/configureplugin.html -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
@@ -48,6 +48,19 @@
                         <id>attach-source</id>
                         <goals>
                             <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <!-- http://maven.apache.org/plugins/maven-deploy-plugin/ -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-deploy-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>deploy</id>
+                        <goals>
+                            <goal>deploy</goal>
                         </goals>
                     </execution>
                 </executions>
