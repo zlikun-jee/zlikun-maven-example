@@ -3,7 +3,7 @@
     <formats>
         <format>tar.gz</format>
     </formats>
-    <includeBaseDirectory>false</includeBaseDirectory>
+    <includeBaseDirectory>true</includeBaseDirectory>
     <baseDirectory>${artifactId}-${version}-bin-${env.main}</baseDirectory>
     <fileSets>
         <fileSet>
@@ -17,7 +17,7 @@
         </fileSet>
         <fileSet>
             <directory>src/main/resources</directory>
-            <outputDirectory>resources</outputDirectory>
+            <outputDirectory>conf</outputDirectory>
             <fileMode>0644</fileMode>
             <includes>
                 <include>*.properties</include>
