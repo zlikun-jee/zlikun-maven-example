@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.zlikun.jee</groupId>
+    <artifactId>zlikun-maven-example</artifactId>
+    <version>1.0.0</version>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <java.version>1.8</java.version>
+    </properties>
+
+    <build>
+        <plugins>
+            <!-- $ mvn zlikun:hello -->
+            <plugin>
+                <groupId>com.zlikun.jee</groupId>
+                <artifactId>zlikun-maven-plugin</artifactId>
+                <version>1.0.0</version>
+                <!-- 自定义配置参数 -->
+                <configuration>
+                    <name>zlikun</name>
+                    <flag>true</flag>
+                    <size>16</size>
+                    <score>70.5</score>
+                    <url>https://zlikun.com</url>
+                    <date>2018-9-30 16:00:00.0</date>
+                    <gender>MALE</gender>
+                    <tags>
+                        <param>X</param>
+                        <param>Y</param>
+                        <param>Z</param>
+                    </tags>
+                </configuration>
+                <!-- 可以为插件绑定生命周期，这里绑定为：编译阶段 -->
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>hello</goal>
+                        </goals>
+                        <phase>compile</phase>
+                    </execution>
+                </executions>
+            </plugin>
+            <!-- 官方编译插件 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                    <encoding>${project.build.sourceEncoding}</encoding>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
