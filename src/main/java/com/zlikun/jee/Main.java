@@ -7,6 +7,8 @@ import java.io.IOException;
 import java.util.Properties;
 
 /**
+ * 程序入口
+ *
  * @author zlikun
  * @date 2018-09-30 16:59
  */
@@ -17,7 +19,7 @@ public class Main {
      * $ java -classpath lib/zlikun-maven-example-1.0.0.jar com.zlikun.jee.Main
      * Hello Kevin !
      *
-     * @param args
+     * @param args 启动参数
      */
     public static void main(String[] args) {
 
