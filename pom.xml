@@ -37,33 +37,21 @@
                     <encoding>${project.build.sourceEncoding}</encoding>
                 </configuration>
             </plugin>
-            <!-- http://maven.apache.org/plugins/maven-javadoc-plugin/ -->
-            <!-- http://maven.apache.org/plugins/maven-javadoc-plugin/usage.html -->
-            <!-- mvn site -->
-            <!-- mvn javadoc:javadoc -->
+            <!-- http://maven.apache.org/plugins/maven-source-plugin/ -->
+            <!-- http://maven.apache.org/plugins/maven-source-plugin/usage.html -->
+            <!-- http://maven.apache.org/plugins/maven-source-plugin/examples/configureplugin.html -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-javadoc-plugin</artifactId>
-                <configuration>
-                    <encoding>UTF-8</encoding>
-                </configuration>
+                <artifactId>maven-source-plugin</artifactId>
                 <executions>
                     <execution>
-                        <id>attach-javadoc</id>
-                        <phase>package</phase>
+                        <id>attach-source</id>
                         <goals>
                             <goal>jar</goal>
                         </goals>
                     </execution>
                 </executions>
             </plugin>
-            <!-- http://maven.apache.org/plugins/maven-source-plugin/ -->
-            <!--
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-source-plugin</artifactId>
-            </plugin>
-            -->
         </plugins>
     </build>
 
